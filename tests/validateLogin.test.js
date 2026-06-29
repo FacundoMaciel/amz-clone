@@ -4,7 +4,7 @@ import { validateLogin } from '../scripts/utils/validateLogin.js';
 
 const mockUsers = [
   { id: 'u1', name: 'John Doe',   email: 'john@example.com', password: 'password123' },
-  { id: 'u2', name: 'Jane Smith', email: 'jane@example.com', password: 'amazon2024'  },
+  { id: 'u2', name: 'Jane Smith', email: 'jane@example.com', password: 'ecommerce2024'  },
 ];
 
 test('returns user when credentials are correct', () => {
@@ -14,7 +14,7 @@ test('returns user when credentials are correct', () => {
 });
 
 test('returns second user with correct credentials', () => {
-  const result = validateLogin(mockUsers, 'jane@example.com', 'amazon2024');
+  const result = validateLogin(mockUsers, 'jane@example.com', 'ecommerce2024');
   assert.equal(result.id, 'u2');
 });
 

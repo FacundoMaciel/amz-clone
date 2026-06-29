@@ -1,55 +1,66 @@
 .main {
-  max-width: 850px;
-  margin-top: 90px;
+  max-width: 860px;
+  margin-top: 96px;
   margin-bottom: 100px;
   padding-left: 30px;
   padding-right: 30px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
   margin-left: auto;
   margin-right: auto;
 }
 
 .back-to-orders-link {
-  display: inline-block;
-  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 32px;
+  color: var(--primary, #5B6AD0);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.15s;
+}
+
+.back-to-orders-link:hover {
+  color: var(--primary-dark, #4A59C0);
 }
 
 .delivery-date {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--text, #16213E);
+  letter-spacing: -0.3px;
 }
 
 .product-info {
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--text-secondary, #64748B);
 }
 
 .product-image {
   max-width: 150px;
   max-height: 150px;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  margin-top: 28px;
+  margin-bottom: 48px;
 }
 
 .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-secondary, #64748B);
 }
 
 .current-status {
-  color: rgb(6, 125, 98);
+  color: var(--success-dark, #16A34A);
 }
 
 @media (max-width: 575px) {
   .progress-labels-container {
-    font-size: 16px;
+    font-size: 13px;
   }
 }
 
@@ -65,17 +76,17 @@
 }
 
 .progress-bar-container {
-  height: 25px;
+  height: 10px;
   width: 100%;
-
-  border: 1px solid rgb(200, 200, 200);
+  background: var(--border, #E2E8F0);
   border-radius: 50px;
   overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
-  background-color: green;
+  background: linear-gradient(90deg, var(--primary, #5B6AD0), var(--success-dark, #16A34A));
   border-radius: 50px;
   width: 50%;
+  transition: width 0.6s ease;
 }

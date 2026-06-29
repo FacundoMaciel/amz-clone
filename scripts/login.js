@@ -1,5 +1,4 @@
 import { saveCurrentUser, getCurrentUser } from '../data/auth.js';
-import { validateLogin } from './utils/validateLogin.js';
 
 if (getCurrentUser()) {
   window.location.href = 'index.html';
@@ -21,15 +20,19 @@ document.querySelector('.js-login-form').addEventListener('submit', async (event
   errorEl.textContent = '';
 
   try {
-    const response = await fetch('backend/users.json');
-    const users = await response.json();
-    const user = validateLogin(users, email, password);
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
 
-    if (user) {
-      saveCurrentUser({ id: user.id, name: user.name, email: user.email });
+    const data = await response.json();
+
+    if (response.ok) {
+      saveCurrentUser({ id: data.id, name: data.name, email: data.email });
       window.location.href = 'index.html';
     } else {
-      errorEl.textContent = 'Incorrect email or password.';
+      errorEl.textContent = data.error || 'Incorrect email or password.';
     }
   } catch {
     errorEl.textContent = 'An error occurred. Please try again.';

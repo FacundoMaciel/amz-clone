@@ -7,29 +7,32 @@
       (Responsive design = make the website look good on
       smaller screen sizes like a phone or a tablet). -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
     <!-- Load a font called Roboto from Google Fonts. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Here are the CSS files for this page. -->
     <link rel="stylesheet" href="styles/shared/general.css">
-    <link rel="stylesheet" href="styles/shared/amazon-header.css">
+    <link rel="stylesheet" href="styles/shared/ecommerce-test-header.css">
     <link rel="stylesheet" href="styles/pages/orders.css">
   </head>
   <body>
-    <div class="amazon-header">
-      <div class="amazon-header-left-section">
-        <a href="amazon.html" class="header-link">
-          <img class="amazon-logo"
-            src="images/amazon-logo-white.png">
-          <img class="amazon-mobile-logo"
-            src="images/amazon-mobile-logo-white.png">
+    <div class="ecommerce-test-header">
+      <div class="ecommerce-test-header-left-section">
+        <a href="index.html" class="header-link">
+          <svg class="site-logo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 10a4 4 0 01-8 0" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="site-logo-text">ecommerce<em>.test</em></span>
         </a>
       </div>
 
-      <div class="amazon-header-middle-section">
+      <div class="ecommerce-test-header-middle-section">
         <input class="search-bar" type="text" placeholder="Search">
 
         <button class="search-button">
@@ -37,7 +40,7 @@
         </button>
       </div>
 
-      <div class="amazon-header-right-section">
+      <div class="ecommerce-test-header-right-section">
         <a class="orders-link header-link" href="orders.html">
           <span class="returns-text">Returns</span>
           <span class="orders-text">& Orders</span>

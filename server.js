@@ -4,7 +4,7 @@ import { extname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -33,7 +33,12 @@ async function handleRegister(req, res) {
     }
 
     const usersPath = join(__dirname, 'backend/users.json');
-    const users = JSON.parse(await readFile(usersPath, 'utf-8'));
+    let users;
+    try {
+      users = JSON.parse(await readFile(usersPath, 'utf-8'));
+    } catch {
+      users = [];
+    }
 
     if (users.find(u => u.email === email)) {
       res.writeHead(409, { 'Content-Type': 'application/json' });
@@ -51,11 +56,44 @@ async function handleRegister(req, res) {
   }
 }
 
+async function handleLogin(req, res) {
+  let body = '';
+  for await (const chunk of req) body += chunk;
+
+  try {
+    const { email, password } = JSON.parse(body);
+
+    const usersPath = join(__dirname, 'backend/users.json');
+    let users;
+    try {
+      users = JSON.parse(await readFile(usersPath, 'utf-8'));
+    } catch {
+      users = [];
+    }
+
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ id: user.id, name: user.name, email: user.email }));
+    } else {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Incorrect email or password.' }));
+    }
+  } catch {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'Invalid request.' }));
+  }
+}
+
 const server = createServer(async (req, res) => {
   const urlPath = req.url.split('?')[0];
 
   if (req.method === 'POST' && urlPath === '/api/register') {
     return handleRegister(req, res);
+  }
+
+  if (req.method === 'POST' && urlPath === '/api/login') {
+    return handleLogin(req, res);
   }
 
   const filePath = join(__dirname, urlPath === '/' ? 'login.html' : urlPath);
@@ -73,6 +111,6 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n  Amazon Clone running at http://localhost:${PORT}`);
+  console.log(`\n  Ecommerce Test running at http://localhost:${PORT}`);
   console.log('  Press Ctrl+C to stop.\n');
 });

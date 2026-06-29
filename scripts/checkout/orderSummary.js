@@ -9,7 +9,7 @@ export function renderOrderSummary() {
   if (cart.length === 0) {
     document.querySelector('.js-order-summary').innerHTML = `
       <div class="empty-cart">
-        <div class="empty-cart-title">Your Amazon Cart is empty</div>
+        <div class="empty-cart-title">Your cart is empty</div>
         <p class="empty-cart-subtitle">Add items from the home page to get started.</p>
         <a href="index.html" class="button-primary empty-cart-btn">Continue Shopping</a>
       </div>

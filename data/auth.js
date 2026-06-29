@@ -1,4 +1,4 @@
-const COOKIE_NAME = 'amazon_session';
+const COOKIE_NAME = 'ecommerce_test_session';
 const COOKIE_DAYS = 30;
 
 function setCookie(value) {

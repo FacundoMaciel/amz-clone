@@ -1,7 +1,3 @@
-# ─── Datos sensibles ──────────────────────────────────────────────────────────
-# Contiene usuarios registrados con contraseñas en texto plano
-backend/users.json
-
 # Variables de entorno (secretos, API keys, etc.)
 .env
 .env.local

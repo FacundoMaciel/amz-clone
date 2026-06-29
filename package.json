@@ -1,7 +1,7 @@
 {
-  "name": "amazon-clone",
+  "name": "ecommerce-test",
   "version": "1.0.0",
-  "description": "Amazon clone - vanilla JS",
+  "description": "Ecommerce Test - vanilla JS",
   "type": "module",
   "scripts": {
     "start": "node server.js",
